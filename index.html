@@ -8,7 +8,7 @@
     body {
         font-family: Arial, sans-serif;
         padding: 20px;
-        background-color: rgb(201, 167, 117);
+        background-color: rgb(242, 147, 5);
     }
     .form-container {
         display: flex;
@@ -39,10 +39,10 @@
         display: block;
         margin-bottom: 5px;
     }
-    input[type="text"], input[type="email"], input[type="date"], select, textarea {
+    input[type="text"], input[type="date"], select, textarea {
         width: 100%;
         padding: 10px;
-        border: 1px solid #cd5858;
+        border: 1px solid #ebb40e;
         border-radius: 4px;
         box-sizing: border-box;
         font-size: 16px;
@@ -51,20 +51,19 @@
         width: 100%;
         text-align: center;
         margin-top: 20px;
-        
-        /* padding: 10px; */
+        border: 1px ;
     }
     input[type="submit"] {
-        background-color: #c97d3a;
-        color: white;
+        background-color: #fdb706;
+        color: rgb(3, 3, 3);
         padding: 12px 20px;
         border: none;
-        border-radius: 4px;
+        border-radius: 5px 5px;
         cursor: pointer;
         font-size: 16px;
     }
     input[type="submit"]:hover {
-        background-color: #96602f;
+        background-color: #ffda09;
     }
 
     .table-container {
@@ -94,7 +93,7 @@
         padding: 8px;
         font-size: 16px;
     }
-    .edit-button, .save-button, .cancel-button {
+    .edit-button{
         cursor: pointer;
         color: #0e0e0e;
         text-decoration: underline;
@@ -102,27 +101,25 @@
         border: none;
         padding: 5px;
     }
-    .save-button, .cancel-button {
-        display: none;
-    }
+    
     .editing .edit-button {
         display: none;
     }
-    .editing .save-button, .editing .cancel-button {
+    .editing {
         display: inline;
     }
 
     input[type="button"] {
-        background-color: #c97d3a;
-        color: white;
+        background-color: #fdb706;
+        color: rgb(17, 16, 16);
         padding: 12px 20px;
         border: none;
-        border-radius: 4px;
+        border-radius: 5px 5px;
         cursor: pointer;
         font-size: 16px;
     }
     input[type="button"]:hover {
-        background-color: #96602f;
+        background-color: #ffda09;
     }
     
     .modal {
@@ -139,15 +136,15 @@
         padding-top: 60px;
     }
     .modal-content {
-        background-color: #fefefe;
+        background-color: rgb(242, 147, 5);
         margin: 5% auto;
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px solid rgb(0,0,0);
         width: 80%;
         max-width: 500px;
     }
     .close {
-        color: #aaa;
+        color: #0d0c0c;
         float: right;
         font-size: 28px;
         font-weight: bold;
@@ -159,7 +156,28 @@
         cursor: pointer;
     }
 
-    @media (max-width: 600px) {
+    .edit-save-button{
+        background-color: #fdb706;
+        color: rgb(17, 16, 16);
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .edit-save-button:hover {
+        background-color: #ffda09;
+
+    }
+
+    @media (max-width: 768px) {
+    .modal-content {
+        width: 90%;  /* Adjust width for smaller screens */
+        }
+    }
+
+@media (max-width: 600px) {
     .modal-content {
         width: 95%;  /* Further adjust width for even smaller screens */
         padding: 10px;  /* Reduce padding */
@@ -179,6 +197,7 @@
         margin-bottom: 15px;  /* Adjust button font size */
     }
     }
+
 
     @media (max-width: 768px) {
         .form-container {
@@ -277,14 +296,14 @@
     </div>
 
     <div class="submit-button-container">
-        <input type="button" value="Send to Access Database" onclick="sendDataToServer()">
+        <input type="button" value="Send Data" onclick="sendDataToServer()">
     </div>
 
         <!-- Edit Modal -->
         <div id="editModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Edit Data</h2>
+               <u><h2>Edit Data</h2></u>
                 <form id="editForm">
                     <div class="form-group">
                         <label for="editVname">Voucher Name:</label>
@@ -326,14 +345,11 @@
                         <label for="editRate">Rate:</label>
                         <input type="text" id="editRate" name="editRate" required>
                     </div>
-                    <button type="button" onclick="saveChanges()">Save</button>
+                    <button type="button" class="edit-save-button" onclick="saveChanges()">Save</button>
                 </form>
             </div>
         </div>
     
-
-
-
 
 
     <script>
@@ -412,7 +428,7 @@
             cell8.innerHTML = shade;
             cell9.innerHTML = quantity;
             cell10.innerHTML = rate;
-            cell11.innerHTML = "<button class='edit-button' onclick='editRow(this)'>Edit</button><button class='save-button' onclick='saveRow(this)'>Save</button><button class='cancel-button' onclick='cancelEdit(this)'>Cancel</button>";
+            cell11.innerHTML = "<button class='edit-button' onclick='editRow(this)'>Edit</button>"
 
             // Clear the input fields after submission
             document.getElementById("vname").value = "";
